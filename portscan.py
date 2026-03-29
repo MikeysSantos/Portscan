@@ -1,15 +1,23 @@
 import socket
 import os
+import random
 
 def limpar_tela():
     os.system("clear")
+
+ports = [21,22,80,443,445,3306]
+
+RED = "\033[31m"
+GREEN = "\033[32m"
+BLUE = "\033[34m"
+RESET = "\033[0m"
 
 while True:
 
  limpar_tela()
 
  print("-"*60)
- print("""
+ ASCII_art = [f"""{GREEN}
 
 ██████╗  ██████╗ ███╗   ███╗ █████╗ ██╗███╗   ██╗
 ██╔══██╗██╔═══██╗████╗ ████║██╔══██╗██║████╗  ██║
@@ -18,33 +26,73 @@ while True:
 ██████╔╝╚██████╔╝██║ ╚═╝ ██║██║  ██║██║██║ ╚████║
 ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 
-██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗  █████╗ ███╗   ██╗
-██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔════╝ ██╔══██╗████╗  ██║
-██████╔╝██║   ██║██████╔╝   ██║   ███████╗██║  ███╗███████║██╔██╗ ██║
-██╔═══╝ ██║   ██║██╔══██╗   ██║   ╚════██║██║   ██║██╔══██║██║╚██╗██║
-██║     ╚██████╔╝██║  ██║   ██║   ███████║╚██████╔╝██║  ██║██║ ╚████║
-╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝
+██████╗  ██████╗ ██████╗ ████████╗ ███████╗ ██████╗ █████╗ ███╗   ██╗
+██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝ ██╔════╝██╔════╝██╔══██╗████╗  ██║
+██████╔╝██║   ██║██████╔╝   ██║    ███████╗██║     ███████║██╔██╗ ██║
+██╔═══╝ ██║   ██║██╔══██╗   ██║    ╚════██║██║     ██╔══██║██║╚██╗██║
+██║     ╚██████╔╝██║  ██║   ██║    ███████║╚██████╗██║  ██║██║ ╚████║
+╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝ {RESET}
 
+        ╔═══ ══════════════════════════════════╗
+       ║ {GREEN}  DOMAIN  PORTSCAN {RESET}                   ║
+        ║   {BLUE}scanning ports...{RESET} [{RED}■■■■■■■■■■{RESET}]     ║
+        ║   status: {GREEN}ACTIVE{RESET}                     ║
+        ╚══════════════════════════════ ═══════╝
 
+             {GREEN}>>> ACCESS GRANTED <<<{RESET}
 
-Ass:unixmasonry
- """)
+""",
+
+f"""{GREEN}
+╔══════════════════════════════════════╗
+║  ██████╗  ██████╗ ██████╗ ████████╗  ║
+║  ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝  ║
+║  ██████╔╝██║   ██║██████╔╝   ██║     ║
+║  ██╔═══╝ ██║   ██║██╔══██╗   ██║     ║
+║  ██║     ╚██████╔╝██║  ██║   ██║     ║
+║  ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝     ║
+║        >>>  PORT SCANNER  <<<       ║
+╚══════════════════════════════════════╝
+                   {RESET}""",
+
+f"""{GREEN}
+░▒▓███████▓▒░ ░▒▓██████▓▒░ ░▒▓███████▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░      
+░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░      
+░▒▓███████▓▒░░▒▓████████▓▒░ ░▒▓███████▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░      
+░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░      
+░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓███████▓▒░
+
+        >> scanning ports... <<
+                   {RESET}""",
+
+f"""{GREEN}
+██████████████████████████████
+█▄─▄▄▀█▄─▄▄─█▄─▄▄▀█▄─▄▄─█─▄▄▄▄█
+██─▄─▄██─▄█▀██─██─██─▄█▀█▄▄▄▄─█
+▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀
+      PORT SCAN CORE
+                   {RESET}""",
+]
+ escolha = random.choice(ASCII_art)
+ print(escolha)
  print("-"*60)
- opcao = int(input("Qual opção deseja?\n[1]-Verificação de portas para um website\n[2]-Help\n[3]-Exit\n:"))
+ opcao = int(input("Qual opção deseja?\n[1]-Verificação de portas para um website ou loopback\n[2]-Help\n[3]-exit\n:"))
  if opcao == 1:
-   limpar_tela()
-   domain = str(input("Escreva o website...\n:"))
-   client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-   client.settimeout(5)
-   code = client.connect_ex((domain, 80))
-   if code == 0:
-    print("80  ---> OPEN")
-    print("Conexão sucedida")
-    sair = input("")
-   else:
-    print("80  ---> CLOSED")
-    print("Tempo de espera maxima atingida, conexão recusada.")
-    sair = input("")
+  limpar_tela()
+  domain = str(input("Escreva o website ou lo...\n:"))
+  for port in ports:
+      client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+      client.settimeout(0.1)
+      code = client.connect_ex((domain, port))
+      if code == 0:
+         print(port,"---> OPEN")
+
+      else:
+         print(port,"---> CLOSED")
+  exit = input("")
+
  elif opcao == 2:
    limpar_tela()
    print("""
@@ -86,6 +134,7 @@ Saída:
 
 """)
    sair = input("")
+
  elif opcao == 3:
    limpar_tela()
    break
