@@ -16,7 +16,7 @@ while True:
 
  limpar_tela()
 
- print("-"*60)
+ print("-"*56)
  ASCII_art = [f"""{GREEN}
 
 ██████╗  ██████╗ ███╗   ███╗ █████╗ ██╗███╗   ██╗
@@ -77,7 +77,7 @@ f"""{GREEN}
 ]
  escolha = random.choice(ASCII_art)
  print(escolha)
- print("-"*60)
+ print("-"*56)
  opcao = int(input("Qual opção deseja?\n[1]-Verificação de portas para um website ou loopback\n[2]-Help\n[3]-exit\n:"))
  if opcao == 1:
   limpar_tela()
