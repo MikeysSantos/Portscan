@@ -154,7 +154,3 @@ Saída:
    limpar_tela()
    print("Opção não encontrada...")
    sair = input("")
- else:
-   limpar_tela()
-   print("Opção não encontrada...")
-   sair = input("")
