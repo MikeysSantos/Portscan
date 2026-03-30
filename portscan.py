@@ -139,8 +139,7 @@ Saída:
    limpar_tela()
    res = dns.resolver.Resolver()
    alvo = str(input("Diga o website\n:"))
-   registro_dns = str(input("registro_dns\n:"))
-   resultado = res.resolve(alvo, registro_dns)
+   resultado = res.resolve(alvo, "A")
    limpar_tela()
    for info in resultado:
       print(alvo, "tem endereço", info)
