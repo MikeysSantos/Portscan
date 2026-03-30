@@ -77,11 +77,8 @@ f"""{GREEN}
 ]
  escolha = random.choice(ASCII_art)
  print(escolha)
- print(f"{RED}-{RESET}"*49)in
-main
-
-
- opcao = int(input(f"[{RED}1{RESET}]-{BLUE}Port verification for a website or loopback{RESET}\n[{RED}2{RESET]-{BLUE}Help{RESET}\n[{RED}3{RESET}]-{BLUET}exit{RESET}\n{BLUE}:{RESET}"))
+ print(f"{RED}-{RESET}"*49)
+ opcao = int(input(f"[{RED}1{RESET}]-{BLUE}Port verification for a website or loopback{RESET}\n[{RED}2{RESET}-{BLUE}Help{RESET}\n[{RED}3{RESET}]-{BLUE}exit{RESET}\n{BLUE}:{RESET}"))
  if opcao == 1:
   limpar_tela()
   domain = str(input("Escreva o website ou lo...\n:"))
