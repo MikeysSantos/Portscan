@@ -79,7 +79,7 @@ f"""{GREEN}
  escolha = random.choice(ASCII_art)
  print(escolha)
  print("-"*60)
- opcao = int(input("Qual opção deseja?\n[1]-Verificação de portas para um website ou loopback\n[2]-IPV4 de um website\n[3]-Help\n[4]-exit\n:"))
+ opcao = int(input("Qual opção deseja?\n[1]-Verificação de portas para um website ou loopback\n[2]-Help\n[3]-exit\n:"))
  if opcao == 1:
   limpar_tela()
   domain = str(input("Escreva o website ou lo...\n:"))
@@ -94,7 +94,7 @@ f"""{GREEN}
          print(port,"---> CLOSED")
   exit = input("")
 
- elif opcao == 3:
+ elif opcao == 2:
    limpar_tela()
    print("""
 ==================== HELP ====================
@@ -135,17 +135,7 @@ Saída:
 """)
    sair = input("")
 
- elif opcao == 2:
-   limpar_tela()
-   res = dns.resolver.Resolver()
-   alvo = str(input("Diga o website\n:"))
-   resultado = res.resolve(alvo, "A")
-   limpar_tela()
-   for info in resultado:
-      print(alvo, "tem endereço", info)
-   exit = input("")
-
- elif opcao == 4:
+ elif opcao == 3:
    limpar_tela()
    break
 
