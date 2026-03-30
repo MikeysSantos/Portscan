@@ -1,7 +1,6 @@
 import socket
 import os
 import random
-import dns.resolver
 
 def limpar_tela():
     os.system("clear")
@@ -17,7 +16,7 @@ while True:
 
  limpar_tela()
 
- print("-"*49)
+ print(f"{RED}-{RESET}"*49)
  ASCII_art = [f"""{GREEN}
 
 ██████╗  ██████╗ ███╗   ███╗ █████╗ ██╗███╗   ██╗
@@ -78,8 +77,11 @@ f"""{GREEN}
 ]
  escolha = random.choice(ASCII_art)
  print(escolha)
- print("-"*49)
- opcao = int(input("Qual opção deseja?\n[1]-Verificação de portas para um website ou loopback\n[2]-Help\n[3]-exit\n:"))
+ print(f"{RED}-{RESET}"*49)in
+main
+
+
+ opcao = int(input(f"[{RED}1{RESET}]-{BLUE}Port verification for a website or loopback{RESET}\n[{RED}2{RESET]-{BLUE}Help{RESET}\n[{RED}3{RESET}]-{BLUET}exit{RESET}\n{BLUE}:{RESET}"))
  if opcao == 1:
   limpar_tela()
   domain = str(input("Escreva o website ou lo...\n:"))
