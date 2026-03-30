@@ -11,6 +11,7 @@ RED = "\033[31m"
 GREEN = "\033[32m"
 BLUE = "\033[34m"
 RESET = "\033[0m"
+BLUES = "\033[38;2;0;255;255m"
 
 while True:
 
@@ -78,10 +79,10 @@ f"""{GREEN}
  escolha = random.choice(ASCII_art)
  print(escolha)
  print(f"{RED}-{RESET}"*49)
- opcao = int(input(f"[{RED}1{RESET}]-{BLUE}Port verification for a website or loopback{RESET}\n[{RED}2{RESET}-{BLUE}Help{RESET}\n[{RED}3{RESET}]-{BLUE}exit{RESET}\n{BLUE}:{RESET}"))
+ opcao = int(input(f"[{RED}1{RESET}]-{BLUES}Port verification for a website or loopback{RESET}\n[{RED}2{RESET}-{BLUES}Help{RESET}\n[{RED}3{RESET}]-{BLUES}exit{RESET}\n{BLUES}:{RESET}"))
  if opcao == 1:
   limpar_tela()
-  domain = str(input("Escreva o website ou lo...\n:"))
+  domain = str(input(f"{BLUES}Escreva o website ou lo...\n:{RESET}"))
   for port in ports:
       client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       client.settimeout(0.1)
@@ -140,5 +141,5 @@ Saída:
 
  else:
    limpar_tela()
-   print("Opção não encontrada...")
+   print(f"{BLUES}Opção não encontrada...{RESET}")
    sair = input("")
