@@ -1,6 +1,7 @@
 import socket
 import os
 import random
+import dns.resolver
 
 def limpar_tela():
     os.system("clear")
@@ -17,29 +18,29 @@ while True:
 
  limpar_tela()
 
- print(f"{RED}-{RESET}"*49)
  ASCII_art = [f"""{GREEN}
-
-██████╗  ██████╗ ███╗   ███╗ █████╗ ██╗███╗   ██╗
-██╔══██╗██╔═══██╗████╗ ████║██╔══██╗██║████╗  ██║
-██║  ██║██║   ██║██╔████╔██║███████║██║██╔██╗ ██║
-██║  ██║██║   ██║██║╚██╔╝██║██╔══██║██║██║╚██╗██║
-██████╔╝╚██████╔╝██║ ╚═╝ ██║██║  ██║██║██║ ╚████║
-╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
-
-██████╗  ██████╗ ██████╗ ████████╗ ███████╗ ██████╗ █████╗ ███╗   ██╗
-██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝ ██╔════╝██╔════╝██╔══██╗████╗  ██║
-██████╔╝██║   ██║██████╔╝   ██║    ███████╗██║     ███████║██╔██╗ ██║
-██╔═══╝ ██║   ██║██╔══██╗   ██║    ╚════██║██║     ██╔══██║██║╚██╗██║
-██║     ╚██████╔╝██║  ██║   ██║    ███████║╚██████╗██║  ██║██║ ╚████║
-╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝ {RESET}
-
-        ╔═══ ══════════════════════════════════╗
-       ║ {GREEN}  DOMAIN  PORTSCAN {RESET}                   ║
-        ║   {BLUE}scanning ports...{RESET} [{RED}■■■■■■■■■■{RESET}]     ║
-        ║   status: {GREEN}ACTIVE{RESET}                     ║
-        ╚══════════════════════════════ ═══════╝
-
+╔═════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                     ║
+║ ██████╗  ██████╗ ███╗   ███╗ █████╗ ██╗███╗   ██╗                                   ║
+║ ██╔══██╗██╔═══██╗████╗ ████║██╔══██╗██║████╗  ██║                                   ║
+║ ██║  ██║██║   ██║██╔████╔██║███████║██║██╔██╗ ██║                                   ║
+║ ██║  ██║██║   ██║██║╚██╔╝██║██╔══██║██║██║╚██╗██║                                   ║
+║ ██████╔╝╚██████╔╝██║ ╚═╝ ██║██║  ██║██║██║ ╚████║                                   ║
+║ ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝                                   ║
+║                                                                                     ║
+║ ██████╗  ██████╗ ██████╗ ████████╗ ███████╗ ██████╗ █████╗ ███╗   ██╗               ║
+║ ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝ ██╔════╝██╔════╝██╔══██╗████╗  ██║               ║
+║ ██████╔╝██║   ██║██████╔╝   ██║    ███████╗██║     ███████║██╔██╗ ██║               ║
+║ ██╔═══╝ ██║   ██║██╔══██╗   ██║    ╚════██║██║     ██╔══██║██║╚██╗██║               ║
+║ ██║     ╚██████╔╝██║  ██║   ██║    ███████║╚██████╗██║  ██║██║ ╚████║               ║
+║ ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝ {RESET}{GREEN}           /
+║                                                                                     ║
+║       {RESET}  ╔══════════════════════════════════════╗{GREEN}                                    /.
+║       {RESET}  ║ {GREEN}  DOMAIN  PORTSCAN {RESET}                   ║ {GREEN}                           "
+║       {RESET}  ║   {BLUE}scanning ports...{RESET} [{RED}■■■■■■■■■■{RESET}]     ║{GREEN}                       .:
+║       {RESET}  ║   status: {GREEN}ACTIVE{RESET}                     ║{GREEN}                                 -_
+║       {RESET}  ╚══════════════════════════════ ═══════╝{GREEN}                                    ,:;
+╚═════════════════════════════════════════════════════════════════════════════════════╝{RESET}
              {GREEN}>>> ACCESS GRANTED <<<{RESET}
 
 """,
@@ -52,9 +53,9 @@ f"""{GREEN}
 ║  ██╔═══╝ ██║   ██║██╔══██╗   ██║     ║
 ║  ██║     ╚██████╔╝██║  ██║   ██║     ║
 ║  ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝     ║
-║        >>>  PORT SCANNER  <<<       ║
-╚══════════════════════════════════════╝
-                   {RESET}""",
+║       {RESET} {BLUES}>>>  PORT SCANNER  <<<{RESET}{GREEN}       ║
+╚══════════════════════════════════════╝{RESET}
+                   """,
 
 f"""{GREEN}
 ░▒▓███████▓▒░ ░▒▓██████▓▒░ ░▒▓███████▓▒░ 
@@ -64,22 +65,21 @@ f"""{GREEN}
 ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░      
 ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓█▓▒░      
 ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░ ░▒▓███████▓▒░
-
-        >> scanning ports... <<
-                   {RESET}""",
+{RESET}
+       {RED} >> scanning ports... << {RESET}
+                   """,
 
 f"""{GREEN}
 ██████████████████████████████
 █▄─▄▄▀█▄─▄▄─█▄─▄▄▀█▄─▄▄─█─▄▄▄▄█
 ██─▄─▄██─▄█▀██─██─██─▄█▀█▄▄▄▄─█
-▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀
-      PORT SCAN CORE
-                   {RESET}""",
+▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▄▀ {RESET}
+      {RED}PORT SCAN CORE{RESET}
+                   """,
 ]
  escolha = random.choice(ASCII_art)
  print(escolha)
- print(f"{RED}-{RESET}"*49)
- opcao = int(input(f"[{RED}1{RESET}]-{BLUES}Port verification for a website or loopback{RESET}\n[{RED}2{RESET}-{BLUES}Help{RESET}\n[{RED}3{RESET}]-{BLUES}exit{RESET}\n{BLUES}:{RESET}"))
+ opcao = int(input(f"Qual opção deseja?\n\n{RED}[1]{RESET}-{BLUES}Verificação de portas para um website ou loopback{RESET}\n{RED}[2]{RESET}-{BLUES}IPV4 de um website{RESET}\n{RED}[3]{RESET}-{BLUES}Help{RESET}\n{RED}[4]{RESET}-{BLUES}exit{RESET}\n{BLUES}:{RESET}"))
  if opcao == 1:
   limpar_tela()
   domain = str(input(f"{BLUES}Escreva o website ou lo...\n:{RESET}"))
@@ -88,15 +88,15 @@ f"""{GREEN}
       client.settimeout(0.1)
       code = client.connect_ex((domain, port))
       if code == 0:
-         print(port,"---> OPEN")
+         print(port,f"{BLUES}---> OPEN{RESET}")
 
       else:
-         print(port,"---> CLOSED")
+         print(port,f"{RED}---> CLOSED{RESET}")
   exit = input("")
 
- elif opcao == 2:
+ elif opcao == 3:
    limpar_tela()
-   print("""
+   print(f"""{BLUES}
 ==================== HELP ====================
 
 DOMAIN_PORTSCAN - Scanner básico de portas
@@ -132,14 +132,24 @@ Saída:
 80 ---> OPEN
  
 ===========================================
-""")
+{RESET}""")
    sair = input("")
 
- elif opcao == 3:
+ elif opcao == 2:
+   limpar_tela()
+   res = dns.resolver.Resolver()
+   alvo = str(input(f"{BLUES}Diga o website\n:{RESET}"))
+   registro_dns = str(input(f"{BLUES}registro_dns\n:{RESET}"))
+   resultado = res.resolve(alvo, registro_dns)
+   limpar_tela()
+   for info in resultado:
+      print(alvo, "tem endereço", info)
+   exit = input("")
+
+ elif opcao == 4:
    limpar_tela()
    break
 
  else:
    limpar_tela()
-   print(f"{BLUES}Opção não encontrada...{RESET}")
-   sair = input("")
+   print(f"{RED}Opção não encontrada...{RESET}")
